@@ -1,0 +1,46 @@
+﻿@using NatuKing.Clases;
+@model User;
+@{
+    ViewData["Title"] = "LoginIndex";
+}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/LoginS.css" rel="stylesheet" />
+
+<body class="body">
+    <label class="c c1">The</label>
+    <label class="c c2">Chaman</label>
+    <label class="c c3">King</label>
+    <img class="img7" src="~/img/hoja (3).png" />
+    <div class="Centro">
+        <div class="Circulo">
+            <img class="img6" src="~/img/usuario.png" />
+            <!--<img />-->
+        </div>
+        <div class="Contenedor">
+            <form asp-action="LoginIndex" method="post" id="frmEnviar">
+                <div>
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-success">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+    <img class="img1" src="~/img/tabaco.png" />
+    <img class ="img2" src="~/img/cesped.png" />
+    <img class ="img3" src="~/img/hoja (1).png" />
+    <img class="img4" src="~/img/cesped.png" />
+    <img class="img5" src="~/img/hoja.png" />
+
+</body>

@@ -1,0 +1,196 @@
+﻿@using NatuKing.Clases;
+@model Comprascls;
+
+@{
+    ViewData["Title"] = "Proveedores";
+    List<Comprascls> lista = ViewBag.Compra;
+    Medicamento mer = ViewBag.Mer;
+    Empleadocls emp = ViewBag.Emp;
+    Provedorcls prov = ViewBag.Prov;
+    String bus="",bus2="";
+    int sect =0;
+    sect = ViewBag.Sect;
+    bus2 = ViewBag.Bus2;    
+    bus = ViewBag.Bus;
+    String tempFe = " ";
+}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/compra/comprasmos5.css" rel="stylesheet" />
+
+<div class="Cuerpo">
+    <form class="Busqueda" asp-action="Comprar" method="post" id="frm-bus">
+        <input type="hidden" name="sector" value="@sect" />
+        <input type="text" name="bus" value="@bus" />
+        <input type="hidden" name="bus2" value="@bus2" />
+        <div onclick="Buscar()" class="Btn-Mostrar"><label>Buscar</label></div>
+    </form>
+    <div class="Cont">
+        <label class="lb t1">Producto</label><label class="lb t2">Cantidad</label> <label class="lb t3">Total</label>
+        <label class="lb t4">C/U</label><label class="lb t5">Clave:Empleado/Provedor</label>
+        <div class="Elementos">
+            @for (int x = 0; x < lista.Count; x++)
+            {
+                if (lista[x].Fecha != null)
+                    if (!tempFe.Equals(lista[x].Fecha))
+                    {
+                        tempFe = lista[x].Fecha;
+                        <div class="Fecha">
+                        </div>
+                    }
+                <div class="ele">
+                    <label class="c1">@lista[x].Codbar</label>
+                    <label class="c2">@lista[x].Cantidad</label>
+                    <label class="c3">$@lista[x].TotalV</label>
+                    <label class="c4">$@lista[x].CostoU</label>
+                    <label class="c5">@lista[x].idEmp/@lista[x].idProv</label>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="img_tam" onclick="Ventana()">
+        <img src="~/Img/carpeta.png"/>
+        <label onclick="Ventana()">Comprar</label>
+    </div>
+
+    <div class="Ventana" id="Ventana">
+        <a class="Circ" onclick="Aparecer()" asp-action="NuevaVenta" target="CuerpoSec">
+            <label>Nuevo</label>
+        </a>
+        <a class="Circ" onclick="Aparecer()" asp-action="ViejaVenta" target="CuerpoSec">
+            <label>Viejo</label>
+        </a>
+    </div>
+
+
+    <div class="quit" id="quit" onclick="Quit()">
+    </div>
+    <iframe class="CuerpoSec" id="CuerpoSec" name="CuerpoSec">
+    </iframe>
+  
+</div>
+<div class="LatDer">
+    <div class="Seleccion">
+        <div id="Mer" class="Mer" onclick="Act(1)">
+            <label onclick="Act(1)">Productos</label>
+        </div>
+        <div id="Emp" class="Emp" onclick="Act(2)">
+            <label onclick="Act(2)">Empleado</label>
+        </div>
+        <div id="Prov" class="Prov" onclick="Act(3)">
+            <label onclick="Act(3)">Proveedor</label>
+        </div>
+    </div>
+    <form class="Busqueda2" asp-action="Comprar" method="post" id="frm-bus2">
+        <input type="hidden" name="sector" id="sector" value="@sect"/>
+        <input type="hidden" name="bus" value="@bus" />
+        <input type="text" name="bus2" value="@bus2" />
+        <div onclick="Buscar2()" class="Btn-Mostrar"><label>Buscar</label></div>
+    </form>
+    <div class="Cont2">
+        @if(mer!=null)
+        {
+            <div style="width:100%">
+                <label style="font-weight:bold;">Nombre:</label>
+                <label style="margin-right:100px;">@mer.Nombre/@mer.Presentacion</label>
+            </div>
+            <div style="width:100%">
+                <label style="font-weight:bold;">Precio_compra:</label>
+                <label style="margin-right:150px;">@mer.Pcompra</label>
+            </div>
+            <div style="width:100%">
+                <label style="font-weight:bold;">Precio_venta:</label>
+                <label style="margin-right:150px;">@mer.Pventa</label>
+            </div>
+        }else if(emp!=null)
+        {
+            <div style="width:100%">
+                <label style="font-weight:bold;">Nombre:</label>
+                <label style="margin-right:100px;">@emp.Nombre</label>
+            </div>
+            <div style="width:100%">
+                <label style="font-weight:bold;">Correo:</label>
+                <label style="margin-right:100px;">@emp.Correo</label>
+            </div >
+            <div style="width:100%">
+                <label style="font-weight:bold;">Telefono:</label>
+                <label style="margin-right:100px;">@emp.Telefono</label>
+            </div>   
+            
+        }else if (prov != null)
+        {
+            <div style="width:100%">
+                <label style="font-weight:bold;">Nombre:</label>
+                <label style="margin-right:100px;">@prov.Nombre</label>
+            </div>
+            <div style="width:100%">
+                <label style="font-weight:bold;">Correo:</label>
+                <label style="margin-right:100px;">@prov.Correo</label>
+            </div>
+            <div style="width:100%">
+                <label style="font-weight:bold;">Telefono:</label>
+                <label style="margin-right:100px;">@prov.Telefono</label>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="~/js/generic.js"></script> 
+<script>
+    const val = document.getElementById("CuerpoSec");
+    const vent = document.getElementById("Ventana");
+    if(@sect!=0)
+    {
+        this.Act(@sect);
+    }
+     function Act(id){
+        document.getElementById("sector").value = id;
+        const mer = document.getElementById("Mer");
+        const emp = document.getElementById("Emp");
+        const prov = document.getElementById("Prov")
+        if(id==1)
+        {
+            mer.classList.add("Active")
+            emp.classList.remove("Active");
+            prov.classList.remove("Active");
+        }
+        else if (id == 2) 
+        {
+            mer.classList.remove("Active")
+            emp.classList.add("Active");
+            prov.classList.remove("Active");
+        }
+        else if(id==3)
+        {
+            mer.classList.remove("Active")
+            emp.classList.remove("Active");
+            prov.classList.add("Active");
+        }
+    }
+    function Buscar() {
+        document.getElementById("frm-bus").submit();
+    }
+    function Buscar2() {
+        document.getElementById("frm-bus2").submit();
+    }
+    function Aparecer() {
+        val.style.display = "flex";
+        document.getElementById("quit").style.visibility = "visible";
+    }
+    function Quit() {
+        val.style.display = "none";
+        vent.style.display= "flex";
+        document.getElementById("quit").style.visibility = "hidden";
+        location.reload();
+    }
+    function Ventana()
+    {
+        alert("ventana");
+        document.getElementById("quit").style.visibility = "visible";
+        vent.style.display="flex";
+    }
+</script>

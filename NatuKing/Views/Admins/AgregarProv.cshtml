@@ -1,0 +1,48 @@
+﻿@using NatuKing.Clases;
+@model Provedorcls;
+@{
+    ViewData["Title"] = "AgregarProv";
+}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/Proveedor/AgregarPro.css" rel="stylesheet" />
+
+<div class="btn_Guardar" onclick="Enviar()">
+    <label>Guardar</label>
+</div>
+<form asp-action="AgregarProv" id="frm" method="post">
+    <div class="form-group">
+        <input type="text" asp-for="Nombre" class="btn_Subline" placeholder="Nombre" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group2">
+        <label class="lb_form2">Ciudad:</label>
+        <input type="text" asp-for="Ciudad" class="btn_Subline" placeholder="" />
+        <span asp-validation-for="Ciudad" class="text-danger"></span>
+    </div>
+    <div class="form-group2">
+        <label class="lb_form2">Cp:</label>
+        <input type="text" asp-for="Cp" class="btn_Subline Cp" placeholder="" />
+        <span asp-validation-for="Cp" class="text-danger"></span>
+    </div>
+    <div class="form-group2">
+        <label class="lb_form2">Correo:</label>
+        <input type="text" asp-for="Correo" class="btn_Subline" placeholder="miejemplo@gmail.com" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+    <div class="form-group2">
+        <label class="lb_form2">Telefono:</label>
+        <input type="text" asp-for="Telefono" class="btn_Subline" placeholder="##########" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+</form>
+
+<script>
+    function Enviar() {
+        console.log("Hola");
+        document.getElementById("frm").submit();
+    }
+</script>

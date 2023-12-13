@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "AdminIndex";
+    String name = ViewBag.User;
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/Admin3.css" rel="stylesheet" />
+
+<body>
+    <div class="Cab">
+        <img src="~/Img/beautiful-northern-lights-background-free-vector.jpg" class="ImgCab"/>
+        <label class="NameTienda">The Chaman King</label>
+        <h3>user:@name</h3>
+    </div>
+    <!--<div class="list-group">
+        <a class="list-group-item" href="#"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Mercancia</a>
+        <a class="list-group-item" href="#"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Empleados</a>
+        <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Proovedor</a>
+    </div>-->
+
+    <div class="Lat">
+        <a class="ele" asp-action="Mercancia" target="Cuerpo">
+            <label>Mercancia</label>
+        </a>
+        <a class="ele" asp-action="Empleados" target="Cuerpo">
+            <label>Empleados</label>
+        </a>
+        <a class="ele" asp-action="Proveedores" target="Cuerpo">
+            <label>Proovedor</label>
+        </a>
+        <a class="ele" asp-action="Comprar" target="Cuerpo">
+            <label>Compras</label>
+        </a>
+    </div>
+    <iframe class="Cuerpo" id="Cuerpo" name="Cuerpo">
+
+    </iframe>
+     <!--<div class="Cab2">
+        <div class="Btn"><label>Mostrar</label></div>
+        <div class="Btn"><label>Borrar</label></div>
+        <div class="Btn"><label>Update</label></div>
+        <div class="Btn"><label>Insertar</label></div>
+    </div>-->
+</body>
+<script src="~/js/general1.js"></script>

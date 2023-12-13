@@ -1,0 +1,169 @@
+﻿live-preview-root {
+    width: 0%;
+    height: 0%;
+}
+
+.btn_Guardar {
+    position: absolute;
+    left: calc(100% - 120px);
+    top: 0px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-content: center;
+    background-color: darkmagenta;
+    z-index: 1;
+    border-bottom-left-radius: 90px;
+}
+
+    .btn_Guardar label {
+        font-size: 18px;
+        font-weight: bold;
+        color: aliceblue;
+        margin-right: 20px;
+    }
+
+    .btn_Guardar:hover,
+    .btn_Guardar label {
+        cursor: pointer;
+    }
+
+form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-columns: 100%;
+    grid-template-areas:"C1" "C2" "C3" "C4";
+    background-color: aliceblue; /*#aec7ca*/
+}
+
+    form .lb_form1
+    {
+        font-size:14px;
+        font-weight:bold;
+    }
+
+    form .lb_form2 {
+        font-size: 14px;
+        font-weight: bold;
+        width:100%;
+    }
+
+    .Validation{
+        --bs-text-opacity: 1;
+        color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity)) !important;
+    }
+
+.C{
+    grid-area:C1;
+    display:flex;
+    flex-wrap:wrap;
+    align-content:flex-start;
+    width:100%;
+    height:100%;
+}
+
+.C1{
+    grid-area:C1;
+}
+.C2 {
+    grid-area: C2;
+}
+.C3 {
+    grid-area: C3;
+}
+.C4 {
+    grid-area: C4;
+}
+.tam1{
+    margin-top:40px;
+    width:55%;
+}
+    .btn_Subline{
+        background:none;
+        border:none;
+        border-bottom:solid 2px #000000;
+        outline:none;
+        font-size:18px;
+    }
+    .btn_Subline:focus{
+        outline: solid 2px #0094ff;
+        border-bottom:none;
+        font-size:15px;
+    }
+    .Name {
+        width: 300px;
+        margin-right:37px;
+        height: 30px;
+    }
+
+.tam2 {
+    margin-top: 40px;
+    width: 45%;
+}
+    #btn-list{
+        width:150px;
+    }
+    li {
+        width: 100%;
+    }
+    .dropdown-menu {
+        display: none;
+        flex-wrap: wrap;
+        overflow: scroll;
+        width: 150px;
+        max-height: 300px;
+    }
+
+.tam3 {
+    width: 250px;
+    margin-top: 20px;
+}
+    .tam3 .telefono {
+        width: 220px;
+        height: 30px;
+        margin-right:10px;
+    }
+
+.tam4 {
+    width: 30%;
+    margin-top:35px;
+    margin-left:50px;
+}
+
+.tam5 {
+    width: 120px;
+    margin-top: 20px;
+}
+
+    .tam5 .sueldo {
+        width: 120px;
+        height: 30px;
+    }
+
+.Correo {
+    width: 450px;
+    height: 30px;
+}
+
+.Contra {
+    width: 450px;
+    height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+

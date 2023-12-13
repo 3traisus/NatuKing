@@ -1,0 +1,110 @@
+﻿@using NatuKing.Clases;
+@model Empleadocls
+@{
+    ViewData["Title"] = "AgregarMer";
+    Empleadocls obj = ViewBag.Empleado;
+
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/empleado/agregaremp2.css" rel="stylesheet" />
+
+<div class="btn_Guardar" onclick="Enviar()">
+    <label>Update</label>
+</div>
+<form asp-action="ModificarObj" id="frm" method="post">
+    <div class="C C1">
+        <div class="form-group tam1">
+            <input type="text" asp-for="Nombre" class="btn_Subline Name"  value="@obj.Nombre" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="dropdown tam2">
+            <a class="btn btn-secondary dropdown-toggle" role="button" 
+                data-bs-toggle="dropdown" aria-expanded="false" id="btn-list">
+                    @obj.Puesto
+            </a>
+            <ul class="dropdown-menu ">
+                <li><a class="dropdown-item" onclick="Present('CAJERO')">Cajero</a></li>
+                <li><a class="dropdown-item" onclick="Present('MOSTRADOR')">Mostrador</a></li>
+                <li><a class="dropdown-item" onclick="Present('ADMINISTRADOR')">Administrador</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="C C2">
+        <div class="form-group tam3">
+            <label class="lb_form1">Telefono:</label>
+            <input type="text" asp-for="Telefono" class="btn_Subline telefono" value="@obj.Telefono" />
+            <span asp-validation-for="Telefono" class="text-danger"></span>
+        </div>
+        <div class="form-group tam5">
+            <label class="lb_form1">Sueldo:</label>
+            <input type="text" asp-for="Sueldo" class="btn_Subline sueldo" value="@obj.Sueldo" id="sold"/>
+            <span asp-validation-for="Sueldo" class="text-danger"></span>
+        </div>
+        <div class="form-group tam4">
+            @if (@obj.Horario.Equals("VESPERTINO"))
+            {
+                <input checked="checked" type="checkbox" value="VESPERTINO" onclick="Marcar(1)" id="Ch1" />
+                <label>VESPERTINO</label>
+                <input  type="checkbox" value="MATUTINO" onclick="Marcar(2)" id="Ch2" />
+                <label>MATUTINO</label>
+            }
+            else
+            {
+                <input type="checkbox" value="VESPERTINO" onclick="Marcar(1)" id="Ch1" />
+                <label>VESPERTINO</label>
+                <input checked="checked" type="checkbox" value="MATUTINO" onclick="Marcar(2)" id="Ch2" />
+                <label>MATUTINO</label>
+            }
+        </div>
+    </div>
+    <div class="C C3">
+        <div class="form-group">
+            <label class="lb_form2" style="margin-top:15px;">Correo:</label>
+            <input type="text" asp-for="Correo" class="btn_Subline Correo" value="@obj.Correo" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="C C4">
+        <div class="form-group">
+            <label class="lb_form2">Contraseña:</label>
+            <input type="text" asp-for="Password" class="btn_Subline Contra" value="@obj.Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <input asp-for="Puesto" type="hidden" id="pres" value="@obj.Puesto"/>
+    <input asp-for="Horario" type="hidden" id="horario" value="@obj.Horario"/>
+    <input asp-for="Id" type="hidden" value="@obj.Id"/>
+</form>
+
+<script>
+    function Enviar() {
+        console.log("Hola");
+        document.getElementById("frm").submit();
+    }
+    function Present(valor) {
+        console.log(valor);
+        document.getElementById("pres").value = valor;
+        document.getElementById("btn-list").innerHTML = valor;
+    }
+    function Marcar(id)
+    {
+        const ch1 = document.getElementById("Ch1");
+        const ch2 = document.getElementById("Ch2");
+        if(id==1)
+        {
+            ch1.checked = true;
+            ch2.checked = false;
+            document.getElementById("horario").value= ch1.value;
+        }
+        else
+        {
+            ch1.checked = false;
+            ch2.checked = true;
+            document.getElementById("horario").value = ch2.value;
+        }
+        alert(document.getElementById("horario").value);
+    }
+</script>

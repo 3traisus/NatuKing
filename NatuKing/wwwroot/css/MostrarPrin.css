@@ -1,0 +1,243 @@
+﻿live-preview-root {
+    width: 0%;
+    height: 0%;
+}
+
+.img_dec{
+    pointer-events:none;
+}
+
+.img1 {
+    z-index: 100;
+    position: absolute;
+    opacity: 0.2;
+    transform: rotate(100deg);
+    pointer-events: none;
+}
+
+.img2 {
+    z-index: 100;
+    position: absolute;
+    left: 100px;
+    top: calc(100% - 180px);
+    width: 300px;
+    height: 200px;
+    opacity: 0.35;
+}
+
+.img3 {
+    z-index: 100;
+    position: absolute;
+    left: calc(100% - 400px);
+    top: calc(100% - 500px);
+    width: 500px;
+    height: 500px;
+    opacity: 0.20;
+    transform: rotate(-46.08deg);
+}
+
+
+.NameTienda {
+    position: absolute;
+    left:0;
+    top: 0;
+    font-family: 'Rock Salt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 153px;
+    text-decoration-line: underline;
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.Busqueda {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    width: 300px;
+    height: 50px;
+}
+
+    .Busqueda input {
+        width: 200px;
+    }
+
+form input:focus {
+    outline: solid 2px #e18a8a; /*#f99292*/
+}
+
+.Busqueda .Btn-Mostrar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+    background-color: aliceblue;
+    border: solid 1px #ca5858; /*#ff0000*/
+}
+
+    .Busqueda .Btn-Mostrar:hover,
+    .Busqueda .Btn-Mostrar label:hover {
+        cursor: pointer;
+        background-color: #e18a8a; /*#f99292*/
+    }
+
+.Btn-Mostrar label {
+    color: #ca5858; /*#ff0000*/
+    font-weight: bold;
+    width: 100%;
+    height: max-content;
+    text-align: center;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 300px calc(100% - 300px);
+    grid-template-areas: "Latder Latizq ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #009105 0%, #78EA7C 79.17%);
+    overflow: hidden;
+}
+
+.Latizq{
+    grid-area:Latizq;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-wrap:wrap;
+    align-content:flex-start;
+}
+
+.Latder {
+    grid-area: Latder;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background-color:aliceblue;
+}
+
+.Contenedor{
+    display:flex;
+    flex-wrap:wrap;
+    overflow:scroll;
+    align-content:flex-start;
+    justify-content:space-around;
+    width:960px;
+    height:600px;
+    margin-left:calc(50% - 480px);
+    margin-top:150px;
+    margin-bottom:20px;
+}
+
+.elemento {
+    display: grid;
+    grid-template-rows:284px calc(100% - 284px);
+    grid-template-columns:100%;
+    grid-template-areas:"Img" "Info";
+    flex-wrap: wrap;
+    width:284px;
+    height: 550px;
+    background-color: aliceblue;
+    margin-top: 20px;
+}
+
+.elemento:hover{
+    border:groove 2px darkgreen;
+    box-shadow: darkgreen 10px 10px 10px ;
+    background-color:#000000;
+    opacity:.5;
+}
+
+.elemento:nth-child(1),
+.elemento:nth-child(2),
+.elemento:nth-child(3){
+    margin-top:0px;
+}
+
+    .Img{
+        grid-area:Img;
+        width:100%;
+        height:100%;
+    }
+
+        .Img img {
+            width: 284px;
+            height: 284px;
+        }
+
+    .lb_exis{
+        display:none;
+    }
+
+.lb_exisAct {
+    z-index: 1;
+    display: block;
+    top: -200px;
+    position: relative;
+    width: 100%;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25;
+    font-size: 120px;
+    text-align: center;
+    color: #c2c945;
+    -webkit-text-stroke:5px #000000;
+}
+
+    .Info{
+        grid-area:Info;
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-wrap:wrap;
+        align-content:flex-start;
+    }
+
+.lb_pv {
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25;
+    font-size: 50px;
+    color:darkgreen;
+}
+
+.lb_name {
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.lb_cura {
+    width: 100%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    opacity:.4;
+}
+
+.lb_desc {
+    width: 100%;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.lb_filter{
+    width:100%;
+}
+
+.lb_ft1 {
+    width: 100%;
+}

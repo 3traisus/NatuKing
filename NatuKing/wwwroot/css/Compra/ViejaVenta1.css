@@ -1,0 +1,222 @@
+﻿live-preview-root {
+    width: 0%;
+    height: 0%;
+}
+
+.Busqueda {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    background-color:blue;
+    border-bottom:solid 1px #000000;
+}
+
+.Busqueda input {
+    width: calc(100% - 100px);
+    height:100%;
+}
+
+    .Busqueda input:focus {
+        outline: solid 2px #0094ff; /*#f99292*/
+    }
+
+form .Btn-Mostrar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 99px;
+    height: 100%;
+    background-color: aliceblue;
+    border: solid 1px #4800ff; /*#ff0000*/
+}
+
+    form .Btn-Mostrar:hover,
+    form .Btn-Mostrar label:hover {
+        cursor: pointer;
+        background-color: #0094ff; /*#f99292*/
+    }
+
+.Btn-Mostrar label {
+    color: #4800ff; /*#ff0000*/
+    font-weight: bold;
+    width: 100%;
+    height: max-content;
+    text-align: center;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-areas: "LatIzq LatDer";
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+}
+
+.LatIzq {
+    grid-area: LatIzq;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.LatDer {
+    margin-left: 20px;
+    grid-area: LatDer;
+    width: calc(100% - 20px);
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background-color: #abbac6;
+    border-left:solid 1px #000000;
+}
+
+.form {
+    grid-area: LatIzq;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 50% 25% 25%;
+    grid-template-columns: 100%;
+    grid-template-areas: "Img" "Codbar" "Datos";
+    background-color: aliceblue;
+}
+
+.Codbar {
+    grid-area: Codbar;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+    .div_codbar{
+        margin-left:5%;
+        width:60%;
+        height:100%;
+    }
+
+    .div_codbar_act{
+        background-color:red;
+        opacity:.6;
+    }
+
+    .div_Caducidad{
+        margin-left:5%;
+        width:30%;
+        height:100%;
+    }
+
+    .Inp_codbar{
+        width:100%;
+        height:50px;
+    }
+
+    .Inp_Caducidad{
+        width:100%;
+        height:50%;
+    }
+
+    .Codbar label{
+        width:100%;
+        font-weight:bold;
+    }
+
+.Img {
+    grid-area: Img;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Datos {
+    grid-area: Datos;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+
+    .Datos div{
+        width:30%;
+        height:100%;
+    }
+
+        .Datos label{
+            width:100%;
+            font-weight:bold;
+        }
+
+        .Datos input{
+            width:100%;
+            height:50px;
+        }
+
+.Contenido{
+    display:flex;
+    flex-wrap:wrap;
+    overflow:scroll;
+    align-items:flex-start;
+    width:100%;
+    height:200px;
+}
+
+.elemento {
+    width:100%;
+    height:min-content;
+    border-bottom:solid 1px #000000;
+}
+
+.elemento:hover{
+    cursor:pointer;
+    background-color:#0094ff;
+}
+
+.Select {
+    background-color: #0094ff;
+}
+
+.idLibre{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100px;
+    height:50px;
+}
+
+.btn_Guardar {
+    position: relative;
+    left: calc(100% - 120px);
+    top: 0px;
+    width: 120px;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-content: center;
+    background-color: darkmagenta;
+    z-index: 1;
+}
+
+    .btn_Guardar label {
+        font-size: 18px;
+        font-weight: bold;
+        color: aliceblue;
+        margin-right: 20px;
+    }
+
+    .btn_Guardar:hover,
+    .btn_Guardar label {
+        cursor: pointer;
+    }

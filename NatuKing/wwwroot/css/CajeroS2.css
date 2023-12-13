@@ -1,0 +1,295 @@
+﻿live-preview-root
+{
+    width:0%;
+    height:0%;
+}
+
+body{
+    position:absolute;
+    display:grid;
+    grid-template-columns:300px calc(100% - 300px);
+    grid-template-rows: 100%;
+    grid-template-areas:"Latizq Latder";
+    width:100%;
+    height:100%;
+}
+
+.img_dec {
+    pointer-events: none;
+}
+
+.img1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: calc(100% - 200px);
+    top: -3%;
+    opacity: .55;
+}
+
+.img2 {
+    z-index: 100;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 50px;
+    top: calc(100% - 200px);
+    opacity: .25;
+}
+
+.img3 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 33%;
+    top: 12%;
+    opacity: .15;
+    transform: rotate(35deg);
+}
+
+.NameTienda {
+    position:relative;
+    left:calc(100% - 612px);
+    top:0;
+    width:612px;
+
+    font-family: 'Rock Salt';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 153px;
+    text-decoration-line: underline;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.Busqueda {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 50px;
+}
+.Busqueda input {
+    width: 200px;
+}
+
+    form input:focus {
+        outline: solid 2px #e18a8a; /*#f99292*/
+    }
+
+.Busqueda .Btn-Mostrar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+    background-color: aliceblue;
+    border: solid 1px #ca5858; /*#ff0000*/
+}
+
+    .Busqueda .Btn-Mostrar:hover,
+    .Busqueda .Btn-Mostrar label:hover {
+        cursor: pointer;
+        background-color: #e18a8a; /*#f99292*/
+    }
+
+.Btn-Mostrar label {
+    color: #ca5858; /*#ff0000*/
+    font-weight: bold;
+    width: 100%;
+    height: max-content;
+    text-align: center;
+}
+
+.Contenedor{
+    display:flex;
+    flex-wrap:wrap;
+    overflow:scroll;
+    align-content:flex-start;
+    width:100%;
+    height:400px;
+    border-top:solid 1px #000000;
+}
+
+    .Contenedor .elemento {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100px;
+        border-bottom: solid 1px #000000;
+        background-color: aliceblue;
+    }
+
+    .Contenedor .elementoSelect {
+        background-color: #ffc0c0
+    }
+
+
+.Contenedor .elemento:hover {
+    background-color: #ffc0c0
+}
+
+.elemento img,
+.elementoSelect img{
+    width: 100px;
+    height: 100%;
+}
+
+.elemento .Info,
+.elementoSelect .Info{
+    width: 190px;
+    height: 100%;
+    margin-left: 10px;
+}
+
+            .Info .lb_name{
+                width: 100%;
+                text-align: left;
+                font-weight: bold;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .Info div{
+                width:190px;
+            }
+
+                div .lb_Tit{
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 16px;
+                }
+
+                div .lb_txt {
+                    font-style: normal;
+                    font-size: 16px;
+                }
+
+.Latizq {
+    grid-area: Latizq;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content:flex-start;
+    background-color: #D9D9D9;
+}
+.Latder {
+    grid-area: Latder;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background: linear-gradient(180deg, #000000 0%, #12FFE8 100%);
+}
+
+.SectorVenta {
+    position:relative;
+    left:5%;
+    top: calc(50% - 300px);
+    display: grid;
+    grid-template-rows:25px calc(100% - 25px);
+    grid-template-columns: 100%;
+    grid-template-areas:"Cab" "Elementos";
+    width: 90%;
+    height: 400px;
+    background-color: #393939;
+}
+
+.Div_gen {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 40% 15% 15% 30%;
+    grid-template-areas: "Name Pvent Cant Total";
+}
+
+.Cab {
+    grid-area: Cab;
+    height: 100%;
+}
+
+    .Cab label
+    {
+        font-size:18px;
+        font-weight:bold;
+        width:100%;
+        height:max-content;
+        border-bottom: double 2px #808080;
+        color:aliceblue;
+    }
+
+.Elementos {
+    grid-area: Elementos;
+    display:flex;
+    flex-wrap:wrap;
+    overflow:scroll;
+    align-content:flex-start;
+    width:100%;
+    height:100%;
+}
+
+.Name {
+    grid-area: Name;
+}
+
+.Pvent {
+    grid-area: Pvent;
+}
+
+.Cant {
+    grid-area: Cant;
+}
+
+.Total {
+    grid-area: Total;
+}
+
+.elementoVenta {
+    height: min-content;
+}
+
+    .elementoVenta label {
+        font-size: 16px;
+        font-weight: 400;
+        width: 100%;
+        border-bottom: double 2px #808080;
+        color: aliceblue;
+    }
+
+
+.CuerpoSec {
+    position: absolute;
+    left: calc(50% - 350px);
+    top: calc(50% - 200px);
+    display: none;
+    width: 700px;
+    height: 400px;
+    background-color: aliceblue;
+    z-index: 55;
+}
+
+.quit {
+    visibility: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+    z-index: 50;
+}
+
+.btn_enviar{
+    position:absolute;
+    width:100px;
+    height:50px;
+    top:calc(100% - 50px);
+    left:calc(100% - 100px);
+    background-color:red;
+}
+
+.btn_enviar:hover{
+    cursor:pointer;
+}

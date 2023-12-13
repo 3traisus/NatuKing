@@ -1,0 +1,115 @@
+﻿@using NatuKing.Clases;
+@model Medicamento
+@{
+    ViewData["Title"] = "ModificarMed";
+    List<Medicamento> lista = ViewBag.Medicamento;
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/mercancia/agregarmer4.css" rel="stylesheet" />
+
+<div class="btn_Guardar" onclick="Enviar()">
+    <label>Update</label>
+</div>
+<form asp-action="ModificarObjeto" id="frm" method="post">
+    <div class="Img">
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" role="button" 
+                data-bs-toggle="dropdown" aria-expanded="false" onclick="Lista()" id="btn-list">
+                    @lista[0].Presentacion
+            </a>
+            <ul class="dropdown-menu " id="lista">
+                <li><a class="dropdown-item" onclick="Present('COMPRIMIDO')">Comprimido</a></li>
+                <li><a class="dropdown-item" onclick="Present('CAPSULA')">Capsula</a></li>
+                <li><a class="dropdown-item" onclick="Present('TABLETA')">Tableta</a></li>
+                <li><a class="dropdown-item" onclick="Present('JARABE')">Jarabe</a></li>
+                <li><a class="dropdown-item" onclick="Present('INYECCION')">Inyeccion</a></li>
+                <li><a class="dropdown-item" onclick="Present('SUPOSITORIOS')">Supositorio</a></li>
+                <li><a class="dropdown-item" onclick="Present('GOTAS')">Gotas</a></li>
+                <li><a class="dropdown-item" onclick="Present('AEROSOL')">Aerosol</a></li>
+                <li><a class="dropdown-item" onclick="Present('PARCHE')">Parche</a></li>
+                <li><a class="dropdown-item" onclick="Present('INHALADOR')">Inhalador</a></li>
+                <li><a class="dropdown-item" onclick="Present('POMADA')">Pomada</a></li>
+                <li><a class="dropdown-item" onclick="Present('GEL')">Gel</a></li>
+                <li><a class="dropdown-item" onclick="Present('SOLUCION')">Solucion</a></li>
+                <li><a class="dropdown-item" onclick="Present('BEBIBLES')">Bebibles</a></li>
+                <li><a class="dropdown-item" onclick="Present('SUPLEMENTOS')">Suplemento</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="Imp">
+        <div class="form-group fg1">
+            <input type="text" asp-for="Caducidad" class="btn_Subline Date" value="@lista[0].Caducidad" id="date" />
+            <span asp-validation-for="Caducidad" class="text-danger"></span>
+        </div>
+        <div class="form-group fg1">
+            <input type="text" asp-for="Nombre" class="btn_Subline Name" value="@lista[0].Nombre" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group fgmod">
+            <label>P_Compra:</label>
+            <input type="text" asp-for="Pcompra" class="btn_Subline ModChicos" value="@lista[0].Pcompra" />
+            <span asp-validation-for="Pcompra" class="text-danger"></span>
+        </div>
+        <div class="form-group fgmod">
+            <label>P_Venta:</label>
+            <input type="text" asp-for="Pventa" class="btn_Subline ModChicos" value="@lista[0].Pventa" />
+            <span asp-validation-for="Pventa" class="text-danger"></span>
+        </div>
+        <div class="form-group fgmod">
+            <label>Existencias:</label>
+            <input type="text" asp-for="Existencia" class="btn_Subline ModChicos" value="@lista[0].Existencia" />
+            <span asp-validation-for="Existencia" class="text-danger"></span>
+        </div>
+
+        <div class="form-group fg1">
+            <label style="margin-top:10px;">Codigo_de_Barra:</label>
+            <input type="text" asp-for="CodBar" class="btn_Subline barra" value="@lista[0].CodBar" />
+            <span asp-validation-for="CodBar" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="Cura">
+        <div class="form-group">
+            <label>Cura:</label>
+            <input type="text" asp-for="Cura" class="btn_Subline txtCura" value="@lista[0].Cura" />
+            <span asp-validation-for="Cura" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="Desc">
+        <div class="form-group">
+            <label>Descripcion:</label>
+            <textarea asp-for="Descripcion" placeholder="@lista[0].Descripcion" class="btn_Subline2 txtDesc"></textarea>
+            <span asp-validation-for="Descripcion" class="text-danger"></span>
+        </div>
+    </div>
+    <input asp-for="Clv" type="hidden" value="@lista[0].Clv" />
+    <input asp-for="Presentacion" type="hidden" id="pres" value="@lista[0].Presentacion" />
+</form>
+
+<script>
+    const lista = document.getElementById("lista");
+    function Enviar()
+    {
+        console.log("Hola");
+        document.getElementById("frm").submit();
+    }
+    function Present(valor) {
+        console.log(valor);
+        document.getElementById("pres").value = valor;
+        lista.style.display = "none";
+        document.getElementById("btn-list").innerHTML = valor;
+    }
+    function Lista() {
+        if (lista.style.display === "none") {
+            lista.style.display = "flex";
+        }
+        else {
+            lista.style.display = "none";
+        }
+
+    }
+</script>
+
+

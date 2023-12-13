@@ -1,0 +1,104 @@
+﻿@using NatuKing.Clases;
+@model compraRealizarcls;
+@{
+    ViewData["Title"] = "ViejaVenta";
+    String cb = ViewBag.Codbar;
+    String bus = ViewBag.Bus;
+    String bus2 = ViewBag.Bus2;
+    List<Provedorcls> lista = ViewBag.Proveedor;
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/compra/viejaventa1.css" rel="stylesheet" />
+
+
+<div class="LatIzq">
+    <form class="form" asp-action="ViejaVentaFinalizar" method="post" id="frm">
+        <div class="Codbar">
+            <div class="div_codbar" id="divCodbar">
+                <label>Codigo_de_Barras:</label>
+                <input class="Inp_codbar" asp-for="codbar" type="text" placeholder="#############" value="@cb" />
+            </div>
+            <div class="div_Caducidad">
+                <label>Caducidad</label>
+                <input class="Inp_Caducidad" asp-for="caducidad" type="text" placeholder="dd/mm/aaaa" />
+            </div>
+       
+            <input asp-for="fecha" type="hidden" />
+        </div>
+        <div class="Img">
+            <div class="btn_Guardar" onclick="Enviar()">
+                <label>Guardar</label>
+            </div>
+            <img />
+        </div>
+        <div class="Datos">
+            <div>
+                <label>Cantidad:</label>
+                <input asp-for="cantidad" type="text" />
+            </div>
+            <div>
+                <label>Total</label>
+                <input asp-for="total" type="text" />
+            </div>
+            <div>
+                <label>P:Venta</label>
+                <input asp-for="pVenta" type="text" />
+            </div>
+        </div>
+        <input asp-for="idEmp" type="text" placeholder="IdEmpleado" class="idLibre"/>
+        <input asp-for="clvPro" type="hidden" id="idProv" />
+    </form>
+</div>
+<div class="LatDer">
+    <form class="Busqueda" asp-action="ViejaVenta" method="post" id="frm-bus">
+        <input type="text" name="bus2" value="@bus2" />
+        <div onclick="Buscar()" class="Btn-Mostrar"><label>Buscar</label></div>
+    </form>
+    <div class="Contenido">
+        @for (int x = 0; x < lista.Count; x++)
+        {
+            <div class="elemento" onclick="Selection(@lista[x].Clv,@x)">
+                <div style="width:100%">
+                    <label style="font-weight:bold;">Nombre:</label>
+                    <label style="margin-right:100px;">@lista[x].Nombre</label>
+                </div>
+                <div style="width:100%">
+                    <label style="font-weight:bold;">Telefono:</label>
+                    <label style="margin-right:100px;">@lista[x].Telefono</label>
+                </div>
+                <div style="width:100%">
+                    <label style="font-weight:bold;">Correo:</label>
+                    <label style="margin-right:100px;">@lista[x].Correo</label>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    function Selection(id,cont){
+        const contenido = document.querySelector(".Contenido");
+        document.getElementById("idProv").value = id;
+        for (var i = 0; i < contenido.childElementCount; i++) {
+            if(i==cont)
+            {
+                contenido.children[i].classList.add("Select");
+            }
+            else
+            {
+                contenido.children[i].classList.remove("Select");
+            }
+        }
+        document.getElementById("idProv").value = id;
+       
+    }
+    function Buscar() {
+        document.getElementById("frm-bus").submit();
+    }
+    function Enviar()
+    {
+        document.getElementById("frm").submit();
+    }
+</script>

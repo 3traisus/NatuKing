@@ -1,0 +1,98 @@
+﻿@using NatuKing.Clases;
+@model Medicamento;
+@{
+    String bus = ViewBag.Bus;
+    List<Medicamento> listamed = ViewBag.Medicamento;
+    int valor = ViewBag.Valor;
+    int caso = ViewBag.Caso;
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/mostrarprin.css" rel="stylesheet" />
+
+<body>
+    <div class="Latder">
+        <form class="Busqueda" asp-action="MostIndexPrincipal" method="post" id="frm_bus">
+            <input name="valor" type="hidden" value="@valor" id="valor" />
+            <input name="caso" type="hidden" value="@caso" id="caso" />
+            <input name="bus" type="text" value="@bus" />
+            <div onclick="Buscar()" class="Btn-Mostrar"><label>Buscar</label></div>
+        </form>
+        <label class="lb_filter">Filtros</label>
+        <label class="lb_ft1">Precio</label>
+        <div>
+            <label>$0</label>
+            <input type="range" id="range_precio" min="0" max="500" value="@valor" style="width:200px;" />
+            <label id="cad_rango">$@valor</label>
+        </div>
+       
+    </div>
+    <div class="Latizq">
+        <label class="NameTienda">The Chaman King</label>
+        <img class="img_dec img1" src="~/Img/hoja (1).png" />
+        <img class="img_dec img2" src="~/Img/cesped.png" />
+        <img class="img_dec img3" src="~/Img/hoja.png" />
+
+        <div class="Contenedor" id="Cont_ele">
+            @for(int x=0;x<listamed.Count;x++)
+            {
+                <div class="elemento" onmouseover="Selection(@x)" onmouseleave="Deselection(@x);">
+                    <div class="Img">
+                        <img src="~/Img/Productos/@listamed[x].Foto" />
+                        <label class="lb_exis">@listamed[x].Existencia</label>
+                    </div>
+                    <div class="Info">
+                        <label class="lb_pv">$@listamed[x].Pventa</label>
+                        <label class="lb_name">@listamed[x].Nombre</label>
+                        <label class="lb_cura">@listamed[x].Cura</label>
+                        <label class="lb_desc">@listamed[x].Descripcion</label>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+
+<script>
+    const rangePre = document.getElementById("range_precio");
+    const caso = document.getElementById("caso");
+    const valor = document.getElementById("valor");
+    const EnvForm = document.getElementById("frm_bus");
+    //const Elementos = document.getElementsByClassName("elemento");
+
+    function Selection(cont) {
+        const contenido = document.querySelector(".Contenedor");
+        for (var i = 0; i < contenido.childElementCount; i++) {
+            if (i == cont) {
+                contenido.children[i].children[0].children[1].classList.remove("lb_exis");
+                contenido.children[i].children[0].children[1].classList.add("lb_exisAct");
+            }
+        }
+    }
+
+     function Deselection(cont) {
+        const contenido = document.querySelector(".Contenedor");
+        for (var i = 0; i < contenido.childElementCount; i++) {
+            if (i == cont) {
+                contenido.children[i].children[0].children[1].classList.remove("lb_exisAct");
+                contenido.children[i].children[0].children[1].classList.add("lb_exis");
+            }
+        }
+    }
+
+    rangePre.addEventListener("change", function () {
+        caso.value = 1;
+        valor.value = rangePre.value;
+        EnvForm.submit();
+    });
+
+    rangePre.addEventListener("input", function () {
+        document.getElementById("cad_rango").innerHTML = "$"+rangePre.value;
+    });
+    function Buscar()
+    {
+        EnvForm.submit();
+    }
+</script>

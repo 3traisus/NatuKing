@@ -1,0 +1,165 @@
+﻿live-preview-root {
+    width: 0%;
+    height: 0%;
+}
+
+body
+{
+    position:absolute;
+    display:grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns:20% 80%;
+    grid-template-areas: "Cab Cab" "Lat Cuerpo";
+    width:100%;
+    height:100%
+}
+
+.Cab
+{
+    grid-area:Cab;
+    display:flex;
+    overflow:hidden;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    width:100%;
+    height:100%;
+    border-bottom:solid 3px #000000;
+}
+
+    .ImgCab
+    {
+        z-index:90;
+        position:relative;
+        width:100%;
+        height:100%;
+        opacity:.80;
+    }
+
+    .NameTienda {
+        z-index:100;
+        position: absolute;
+        width: 60%;
+        height: min-content;
+        text-align: left;
+        text-decoration: underline;
+        color: #000000;
+        font-style: normal;
+        font-size: 64px;
+        font-family: 'Rock Salt', cursive;
+        text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    h3 {
+        z-index:100;
+        color: #000000;
+        position: absolute;
+        width: 40%;
+        height:min-content;
+        text-align: right;
+        margin-left: 60%;
+        padding: 0px;
+    }
+
+.Lat {
+    grid-area: Lat;
+    display:flex;
+    flex-wrap:wrap;
+    align-content:flex-start;
+
+    background-color: #1e1e2c;
+    width: 100%;
+    height: 100%;
+    border-right: solid 3px #000000;
+}
+
+a
+{
+    text-decoration:none;
+}
+
+.ele {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #f5fffd; /*#cdc7c7*/
+    border: solid 1px #000000;
+    border-left: none;
+    border-right: none;
+    color: black;
+    text-decoration: none;
+}
+
+    .ele:hover {
+        border: solid 2px #12FFE8;
+        border-left: none;
+        border-right: none;
+        background-color: aliceblue;
+    }
+
+.ele:first-child
+{
+    margin-top:20px;
+}
+
+    .ele label
+    {
+        text-align:center;
+        width:100%;
+        font-weight:;
+        font-size:18px;
+    }
+
+.Cuerpo {
+    grid-area: Cuerpo;
+    background-color: aliceblue;
+    width: 100%;
+    height: 100%;
+}
+
+.Cab2 {
+    position: absolute;
+    left:calc(60% - 200px);
+    top:20%;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 50px;
+}
+
+.Btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e2c;
+    width: 100px;
+    height: 100%;
+    border: solid 1px #ffffff;
+    border-bottom: none;
+}
+
+
+    .Btn:hover {
+        background-color: aliceblue;
+    }
+
+    .Btn:first-child {
+        border-left: none;
+        border-bottom-left-radius: 45px;
+    }
+
+    .Btn:last-child {
+        border-right: none;
+        border-bottom-right-radius: 45px;
+    }
+
+    .Btn label {
+        color: aliceblue;
+    }
+
+    .Btn:hover label {
+        color: #ba3bc9;
+        font-weight: bold;
+    }

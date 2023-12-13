@@ -1,0 +1,96 @@
+﻿@using NatuKing.Clases;
+@model Empleadocls
+
+@{
+    ViewData["Title"] = "Mercancia";
+    List<Empleadocls> lista = ViewBag.Empleado;
+    String bus = ViewBag.Bus;
+    Boolean error = ViewBag.Error;
+}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/empleado/empleado.css" rel="stylesheet" />
+
+<form class="Busqueda" asp-action="Empleados" method="post" id="frm-bus">
+    <input type="text" name="bus" value="@bus" />
+    <div onclick="Buscar()" class="Btn-Mostrar"><label>Buscar</label></div>
+</form>
+
+<div class="Cont">
+    <label class="lb t1">Nombre</label><label class="lb t2">Puesto</label> <label class="lb t3">Horario</label>
+    <label class="lb t4">Sueldo</label> <label class="lb t5">Acciones</label>
+    <div class="Elementos">
+        @for (int x = 0; x < lista.Count; x++)
+        {
+            <div class="ele">
+                <label class="c1">@lista[x].Nombre</label>
+                <label class="c2">@lista[x].Puesto</label>
+                <label class="c3">@lista[x].Horario</label>
+                <label class="c4">$@lista[x].Sueldo mx</label>
+                <div class="c5">
+                    <button onclick="Eliminar(@lista[x].Id)" class="btn btn-outline-primary">
+                        <img class="icon" src="~/Img/basura.png" />
+                    </button>
+                    <button onclick="Modificar(@lista[x].Id); Act();" class="btn btn-outline-primary">
+                        <img class="icon" src="~/Img/editar.png" />
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<form asp-action="EliminarEmp" method="post" id="frm-Eliminar">
+    <input type="hidden" name="id" id="idEliminar" />
+</form>
+
+<form asp-action="ModificarEmp" method="post" id="frm-Mod" target="CuerpoSec">
+    <input type="hidden" name="id" id="idModificar" />
+</form>
+
+<a class="Circ" onclick="Act()" asp-action="AgregarEmp" target="CuerpoSec">
+    <img style="width:50px;" src="~/Img/agregar.png" />
+</a>
+
+<div class="quit" id="quit" onclick="Quit()">
+</div>
+<iframe class="CuerpoSec" id="CuerpoSec" name="CuerpoSec">
+</iframe>
+
+<script src="~/js/generic.js"></script>
+<script>
+    const val = document.getElementById("CuerpoSec");
+    function Buscar() {
+        document.getElementById("frm-bus").submit();
+    }
+    function Eliminar(idEspecialidad) {
+        alert(idEspecialidad);
+        document.getElementById("idEliminar").value = idEspecialidad;
+        mostrarModal().then((resp) => {
+            if (resp.isConfirmed) {
+                var frmEliminar = document.getElementById("frm-Eliminar");
+                frmEliminar.submit();
+            }
+        })
+    }
+    /*function Eliminar(id)
+    {
+        document.getElementById("idEliminar").value = id;
+        document.getElementById("frm-Eliminar").submit();
+    }*/
+    function Modificar(id) {
+        document.getElementById("idModificar").value = id;
+        document.getElementById("frm-Mod").submit();
+    }
+    function Act() {
+        val.style.display = "flex";
+        document.getElementById("quit").style.visibility = "visible";
+    }
+    function Quit() {
+        val.style.display = "none";
+        document.getElementById("quit").style.visibility = "hidden";
+        location.reload();
+    }
+</script>

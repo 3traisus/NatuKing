@@ -1,0 +1,219 @@
+﻿live-preview-root {
+    width: 0%;
+    height: 0%;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: aliceblue; /*#aec7ca*/
+    width: 100%;
+    height: 100%;
+}
+
+.Busqueda {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    width: 400px;
+    height: 50px;
+}
+
+    form input
+    {
+        width:300px;
+    }
+
+     form input:focus {
+        outline: solid 2px #0094ff;/*#f99292*/
+    }
+
+    form .Btn-Mostrar {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100px;
+        height: 100%;
+        background-color: aliceblue;
+        border: solid 1px #4800ff ;/*#ff0000*/
+    }
+
+    form .Btn-Mostrar:hover,
+    form .Btn-Mostrar label:hover {
+        cursor: pointer;
+        background-color: #0094ff;/*#f99292*/
+    }
+
+    .Btn-Mostrar label {
+        color: #4800ff;/*#ff0000*/
+        font-weight: bold;
+        width: 100%;
+        height: max-content;
+        text-align: center;
+    }
+
+.Cont {
+    margin-top: 70px;
+    position: absolute;
+    display: grid;
+    grid-template-rows: 25px 375px;
+    grid-template-columns: 25% 25% 20% 20% 10%;
+    grid-template-areas: "T1 T2 T3 T4 T5" "Cont Cont Cont Cont Cont";
+    width: 100%;
+    height: 400px;
+}
+        .Cont .lb
+        {
+            font-size:18px;
+            font-weight:bold;
+            width:100%;
+            height:max-content;
+            border-bottom: double 2px #808080;
+        }
+
+        .t1{
+            grid-area:T1;
+            padding-left:10px;   
+        }
+
+        .t2{
+            grid-area:T2;
+        }
+
+        .t3{
+            grid-area:T3;
+        }
+
+        .t4{
+            grid-area:T4;
+        }
+
+        .t5{
+            grid-area:T5;
+            text-align:center;
+        }
+
+        .Cont .Elementos{
+            grid-area:Cont;
+            width:100%;
+            height:100%;
+            display:flex;
+            flex-wrap:wrap;
+            overflow:scroll;
+            align-content:flex-start;
+            margin-top:5px;
+        }
+
+        .Elementos .ele{
+            display:grid;
+            grid-template-rows:100%;
+            grid-template-columns:25% 25% 20% 20% 10%;
+            grid-template-areas:"c1 c2 c3 c4 c5";
+            width:100%;
+            height:50px;
+            border-bottom:solid 1px #808080;
+        }
+
+        .c1{
+            grid-area:c1;
+            margin-left:10px;
+            width:100%;
+            height:100%;
+            vertical-align:central;
+        }
+
+        .c2{
+            grid-area:c2;
+            width:100%;
+            height:100%;
+        }
+
+        .c3{
+            grid-area:c3;
+            width:100%;
+            height:100%;
+        }
+
+        .c4{
+            grid-area:c4;
+            width:100%;
+            height:100%;
+        }
+
+        .c5{
+            grid-area:c5;
+            width:100%;
+            height:100%;
+        }
+
+    .Icon{
+        width:25px;
+    }
+
+    .btn{
+        border:none;
+    }
+
+.Circ {
+    position: absolute;
+    left: 90%;
+    top: 80%;
+    width: 100px;
+    height: 100px;
+    border-radius: 90px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 10px 5px rgba(0,0,0,.4);
+    border: outset 4px #4800ff;
+}
+
+    .Circ:hover {
+        cursor: pointer;
+    }
+
+.CuerpoSec {
+    position: absolute;
+    left: calc(50% - 350px);
+    top: calc(50% - 150px);
+    display: none;
+    width: 700px;
+    height: 300px;
+    background-color: aliceblue;
+    z-index: 55;
+}
+
+.quit {
+    visibility: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+    z-index: 50;
+}
+
+/*.Agregar
+{
+    position:absolute;
+        left:calc(50% - 350px);
+        top:calc(50% - 200px);
+    display:grid;
+    grid-template-rows:40% 20% 40%;
+    grid-template-columns:40% 60%;
+    grid-template-areas:"Foto Imp" "Cura CB" "Desc Desc";
+    width:700px;
+    height:400px;
+    background-color:burlywood;
+}*/
+
+
+
+

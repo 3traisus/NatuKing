@@ -1,0 +1,109 @@
+﻿@using NatuKing.Clases;
+@model VentaGeneralcls;
+@{
+    String bus = ViewBag.Bus;
+    //int idvalor = ViewBag.Idvalor;
+    List<Medicamento> listamed = ViewBag.Medicamento; 
+    List<Medicamento> listamedvent = ViewBag.Metvent;
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/CajeroS2.css" rel="stylesheet" />
+
+
+<div class="Latizq">
+    <img src="~/Img/algas-marinas.png" class="img_der img1" />
+    <img src="~/Img/algas-marinas (1).png" class="img_der img2" />
+    <img src="~/Img/medusa.png" class="img_der img3" />
+    <form class="Busqueda" asp-action="CajIndex" method="post" id="frm_bus">
+        <input name="bus" type="text" value="@bus"/>
+        <input name="id" type="hidden" value="" id="id" />
+        <div onclick="Buscar()" class="Btn-Mostrar"><label>Buscar</label></div>
+    </form>
+    <div class="Contenedor">
+        @for(int x = 0;x<listamed.Count;x++)
+        {
+            <div class="elemento" onclick="Selection(@listamed[x].Clv,@x)">
+                <img src="~/Img/Productos/@listamed[x].Foto"/>
+                <div class="Info">
+                    <label class="lb_name">@listamed[x].Nombre</label>
+                    <div><label class="lb_Tit">Precio:</label><label class="lb_txt">@listamed[x].Pventa</label></div>
+                    <div><label class="lb_Tit">Existencias:</label><label class="lb_txt">@listamed[x].Existencia</label></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="Latder">
+    <label class="NameTienda">The ChamanKing</label>
+    <div class="btn_enviar" onclick="SubmitForms()">Mandar</div>
+    <div class="SectorVenta">
+        <div class="Div_gen Cab">
+            <label class="Name">Nombre:</label>
+            <label class="Pvent">P_Venta:</label>
+            <label class="Cant">Cantidad</label>
+            <label class="Total">Total</label>
+        </div>
+        <div class="Elementos">
+            @for(int x=0;x<listamedvent.Count;x++)
+            {
+                <form class="Div_gen elementoVenta" method="post" asp-action="" id="idventa_@x">
+                    <input asp-for="ClvMer" type="hidden" value="@listamedvent[x].Clv">
+                    <input asp-for="Pventa" type="hidden" value="@listamedvent[x].Pventa">
+                    <label class="Name">@listamedvent[x].Nombre</label>
+                    <label class="Pvent">@listamedvent[x].Pventa</label>
+                    <input class="Cant" type="text" asp-for="Cantidad" onblur="Calculo(@listamedvent[x].Pventa,@x)" />
+                    <label class="Total" id="total_@x"></label>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+<!--<div class="quit" id="quit" onclick="Quit()">
+</div>
+<iframe class="CuerpoSec" id="CuerpoSec" name="CuerpoSec">
+</iframe>-->
+<form asp-action="LlenarLista" method="post" id="Llenar" >
+    <input type="hidden" id="LLenar_ele" name="id"/>
+</form>
+<form asp-action="RemoverLista" method="post" id="Remover">
+    <input type="hidden" id="Remover_ele" name="id" />
+</form>
+<script>
+    const EnvForm = document.getElementById("frm_bus");
+    function Buscar()
+    {
+        EnvForm.submit();
+    }
+    function Selection(id, cont) {
+        const contenido = document.querySelector(".Contenedor");
+        if (!contenido.children[cont].classList.contains("elementoSelect"))
+        {
+            document.getElementById("LLenar_ele").value = id;
+            contenido.children[cont].classList.add("elementoSelect");
+            document.getElementById("Llenar").submit();
+
+        }
+        else
+        {
+            document.getElementById("Remover_ele").value = id;
+            contenido.children[cont].classList.remove("elementoSelect");
+            document.getElementById("Remover").submit();
+        }
+    }
+    function Calculo(pvent, ind)
+    {
+        alert(pvent);
+        document.getElementById("total_"+ind).innerHTML = pvent * document.querySelector(".Elementos").children[ind].children[4].value;
+    }
+    function SubmitForms(){
+        const lista = document.querySelector(".Elementos");
+        if(lista!=null)
+            for (var x = 0; x < lista.childElementCount; x++)
+            { 
+                document.getElementById("idventa_"+x).submit();
+            }
+    }
+</script>

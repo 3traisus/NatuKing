@@ -1,0 +1,99 @@
+﻿@using NatuKing.Clases;
+@model Medicamento
+@{
+    ViewData["Title"] = "AgregarMer";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="~/css/mercancia/agregarmer4.css" rel="stylesheet" />
+
+<div class="btn_Guardar" onclick="Enviar()">
+    <label>Guardar</label>
+</div>
+<form asp-action="AgregarMer" id="frm" method="post">
+    <div class="Img">
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" role="button" 
+                data-bs-toggle="dropdown" aria-expanded="false" onclick="Lista()" id="btn-list">
+                    Presentacion
+            </a>
+            <ul class="dropdown-menu " id="lista">
+                <li><a class="dropdown-item" onclick="Present('COMPRIMIDO')">Comprimido</a></li>
+                <li><a class="dropdown-item" onclick="Present('CAPSULA')">Capsula</a></li>
+                <li><a class="dropdown-item" onclick="Present('TABLETA')">Tableta</a></li>
+                <li><a class="dropdown-item" onclick="Present('JARABE')">Jarabe</a></li>
+                <li><a class="dropdown-item" onclick="Present('INYECCION')">Inyeccion</a></li>
+                <li><a class="dropdown-item" onclick="Present('SUPOSITORIOS')">Supositorio</a></li>
+                <li><a class="dropdown-item" onclick="Present('GOTAS')">Gotas</a></li>
+                <li><a class="dropdown-item" onclick="Present('AEROSOL')">Aerosol</a></li>
+                <li><a class="dropdown-item" onclick="Present('PARCHE')">Parche</a></li>
+                <li><a class="dropdown-item" onclick="Present('INHALADOR')">Inhalador</a></li>
+                <li><a class="dropdown-item" onclick="Present('POMADA')">Pomada</a></li>
+                <li><a class="dropdown-item" onclick="Present('GEL')">Gel</a></li>
+                <li><a class="dropdown-item" onclick="Present('SOLUCION')">Solucion</a></li>
+                <li><a class="dropdown-item" onclick="Present('BEBIBLES')">Bebibles</a></li>
+                <li><a class="dropdown-item" onclick="Present('SUPLEMENTOS')">Suplemento</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="Imp">
+        <div class="form-group fg1">
+            <input type="text" asp-for="Caducidad" class="btn_Subline Date" placeholder="dd/mm/aaaa" id="date" />
+            <span asp-validation-for="Caducidad" class="text-danger"></span>
+        </div>
+        <div class="form-group fg1">
+            <input type="text" asp-for="Nombre" class="btn_Subline Name" placeholder="Nombre" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group fg1">
+            <label>Codigo_de_Barra:</label>
+            <input type="text" asp-for="CodBar" class="btn_Subline barra" placeholder="0000000000000" />
+            <span asp-validation-for="CodBar" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="Cura">
+        <div class="form-group">
+            <label>Cura:</label>
+            <input type="text" asp-for="Cura" class="btn_Subline txtCura" placeholder="Enfermedad,Enfermedad2.." />
+            <span asp-validation-for="Cura" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="Desc">
+        <div class="form-group">
+            <label>Descripcion:</label>
+            <textarea asp-for="Descripcion" placeholder="Escribe la Descripcion Aquí" class="btn_Subline2 txtDesc"></textarea>
+            <span asp-validation-for="Descripcion" class="text-danger"></span>
+        </div>
+    </div>
+    <input asp-for="Presentacion" type="hidden" id="pres" />
+</form>
+
+<script>
+const lista = document.getElementById("lista");
+function Enviar()
+{
+    console.log("Hola");
+    document.getElementById("frm").submit();
+}
+function Present(valor)
+{
+    console.log(valor);
+    document.getElementById("pres").value = valor;
+    lista.style.display = "none";
+    document.getElementById("btn-list").innerHTML=valor;
+}
+function Lista()
+{
+    if(lista.style.display==="none")
+    {
+        lista.style.display="flex";
+    } 
+    else
+    {
+        lista.style.display = "none";
+    }
+
+}
+</script>
